@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace Pierre.Controllers
 {
@@ -23,6 +28,7 @@ namespace Pierre.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.PageTitle = "Create Treat";
@@ -44,6 +50,7 @@ namespace Pierre.Controllers
             return View(thisTreat);
         }
 
+        [Authorize]
         public ActionResult AddFlavor(int id)
         {
             ViewBag.PageTitle = "Add Flavor";
@@ -66,6 +73,7 @@ namespace Pierre.Controllers
             return RedirectToAction("Details", new { id = treat.TreatId });
         }
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             ViewBag.PageTitle = "Edit Treat";
@@ -81,6 +89,7 @@ namespace Pierre.Controllers
             return RedirectToAction("Details", new { id = treat.TreatId });
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             ViewBag.PageTitle = "Delete Treat";
@@ -97,6 +106,7 @@ namespace Pierre.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult DeleteJoin(int joinId)
         {

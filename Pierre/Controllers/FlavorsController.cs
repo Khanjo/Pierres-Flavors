@@ -4,15 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace Pierre.Controllers
 {
     public class FlavorsController : Controller
     {
         private readonly PierreContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public FlavorsController(PierreContext db)
+        public FlavorsController(UserManager<ApplicationUser> userManager, PierreContext db)
         {
+            _userManager = userManager;
             _db = db;
         }
 
@@ -23,6 +29,7 @@ namespace Pierre.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.PageTitle = "Create Flavor";
@@ -44,6 +51,7 @@ namespace Pierre.Controllers
             return View(thisFlavor);
         }
 
+        [Authorize]
         public ActionResult AddTreat(int id)
         {
             ViewBag.PageTitle = "Add Treat";
@@ -66,6 +74,7 @@ namespace Pierre.Controllers
             return RedirectToAction("Details", new { id = flavor.FlavorId });
         }
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             ViewBag.PageTitle = "Edit Flavor";
@@ -81,6 +90,7 @@ namespace Pierre.Controllers
             return RedirectToAction("Details", new { id = flavor.FlavorId });
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             ViewBag.PageTitle = "Delete Flavor";
@@ -97,6 +107,7 @@ namespace Pierre.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult DeleteJoin(int joinId)
         {

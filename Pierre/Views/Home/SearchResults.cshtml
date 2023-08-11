@@ -1,0 +1,42 @@
+@{
+    Layout = "_Layout";
+}
+@using Pierre.ViewModels;
+@model Pierre.ViewModels.SearchResults;
+
+<h2>Search Results</h2>
+
+@if (Model.TreatResults.Count == 0 && Model.FlavorResults.Count == 0)
+{
+    <p>No results found for the search term.</p>
+}
+else
+{
+    @if (Model.TreatResults.Count > 0)
+    {
+        <h3>Treat Results</h3>
+        <ul>
+            @foreach (var treat in Model.TreatResults)
+            {
+                <li>@Html.ActionLink(treat.Name, "Details", "Treats", new { id = treat.TreatId })</li>
+                <br>
+            }
+        </ul>
+    }
+
+    @if (Model.FlavorResults.Count > 0)
+    {
+        <h3>Flavor Results</h3>
+        <ul>
+            @foreach (var flavor in Model.FlavorResults)
+            {
+                <li>@Html.ActionLink(flavor.Flav, "Details", "Flavors", new { id = flavor.FlavorId})</li>
+                <br>
+            }
+        </ul>
+    }
+}
+
+<br>
+
+<h2>@Html.ActionLink("Home", "Index")</h2>
