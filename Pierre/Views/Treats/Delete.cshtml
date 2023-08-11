@@ -1,3 +1,20 @@
 @{
     Layout = "_Layout";
 }
+
+@model Pierre.Models.Treat
+
+<h2>Are you sure you want to delete @Html.DisplayFor(model => model.Name)?</h2>
+
+<div id="delete">
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    }
+</div>
+<br>
+<br>
+<div class="links">
+    <h3>@Html.ActionLink("Back to Treats", "Index")</h3>
+    <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
+</div>

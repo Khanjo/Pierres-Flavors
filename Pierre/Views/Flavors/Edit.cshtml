@@ -1,3 +1,29 @@
 @{
     Layout = "_Layout";
 }
+
+@model Pierre.Models.Flavor
+
+<h2>Add a new flavor</h2>
+
+<div id="stuff">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.FlavorId)
+
+        @Html.LabelFor(model => model.Flav)
+        <br>
+        <br>
+        @Html.EditorFor(model => model.Flav)
+        <br>
+        <br>
+        <br>
+        <input type="Submit" value="Add Flavor" class="btn btn-primary" />
+    }
+</div>
+<br>
+<br>
+<div class="links">
+    <h3>@Html.ActionLink("Back to Flavors", "Index")</h3>
+    <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
+</div>
