@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Project.Models
+namespace Pierre.Models
 {
-    public class ProjectContext : DbContext
+    public class PierreContext : DbContext
     {
-        public DbSet<Item> Items { get; set; }
+        public DbSet<Treat> Treats { get; set; }
+        public DbSet<Flavor> Flavors { get; set; }
 
-        public ProjectContext(DbContextOptions options) : base(options) { }
+        public PierreContext(DbContextOptions options) : base(options) { }
     }
 }
