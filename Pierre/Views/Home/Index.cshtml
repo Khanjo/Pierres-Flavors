@@ -1,3 +1,42 @@
 @{
     Layout = "_Layout";
 }
+
+@using Pierre.Models
+
+<h1>Pierre's Bakery</h1>
+
+<hr>
+
+<div id="HomeDisplay">
+    <h3>Treats:</h3>
+    @if(Model["treats"].Length == 0)
+    {
+        <p>No treats have been added.</p>
+    }
+    <ul>
+        @foreach(Treat treat in Model["treats"])
+        {
+            <li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = treat.TreatId })</li>
+        }
+    </ul>
+
+    <h3>Flavors:</h3>
+    @if(Model["flavors"].Length == 0)
+    {
+        <p>No flavors have been added.</p>
+    }
+    <ul>
+        @foreach(Flavor flavor in Model["flavors"])
+        {
+            <li>@Html.ActionLink(@flavor.Flav, "Details", "Flavors", new { id = flavor.FlavorId })</li>
+        }
+    </ul>
+</div>
+
+<hr>
+
+<div class="links">
+    <h2>@Html.ActionLink("See Treats Index", "Index", "Treats")</h2>
+    <h2>@Html.ActionLink("See Flavors Index", "Index", "Flavors")</h2>
+</div>

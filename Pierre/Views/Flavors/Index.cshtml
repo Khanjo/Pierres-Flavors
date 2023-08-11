@@ -1,3 +1,28 @@
 @{
     Layout = "_Layout";
 }
+
+@using Pierre.Models
+
+<h1>Flavors</h1>
+
+<div id="stuff">
+    @if (Model.Count == 0)
+    {
+        <p>No flavors have been added yet.</p>
+    }
+
+    <ul>
+        @foreach (Flavor flavor in Model)
+        {
+            @Html.ActionLink($"{flavor.Flav}", "Details", new { id = flavor.FlavorId })
+        }
+    </ul>
+</div>
+
+<hr>
+
+<div class="links">
+    <h2>@Html.ActionLink("Add New Flavor", "Create")</h2>
+    <h2>@Html.ActionLink("Home", "Index", "Home")</h2>
+</div>
