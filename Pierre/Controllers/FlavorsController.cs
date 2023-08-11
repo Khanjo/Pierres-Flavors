@@ -47,7 +47,7 @@ namespace Pierre.Controllers
         public ActionResult Details(int id)
         {
             ViewBag.PageTitle = "Flavor Details";
-            Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+            Flavor thisFlavor = _db.Flavors.Include(flavor => flavor.JoinEntities).ThenInclude(join => join.Treat).FirstOrDefault(flavor => flavor.FlavorId == id);
             return View(thisFlavor);
         }
 

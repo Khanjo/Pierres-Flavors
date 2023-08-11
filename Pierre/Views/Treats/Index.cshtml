@@ -7,15 +7,15 @@
 <h1>Treats</h1>
 
 <div id="stuff">
-    @if(Model.Count == 0)
+    @if (Model.Count == 0)
     {
         <p>No treats have been added yet.</p>
     }
 
     <ul>
-        @foreach(Treat treat in Model)
+        @foreach (Treat treat in Model)
         {
-            @Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })
+            <li>@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })</li>
         }
     </ul>
 </div>
