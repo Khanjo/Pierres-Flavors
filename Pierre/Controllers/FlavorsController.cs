@@ -64,7 +64,7 @@ namespace Pierre.Controllers
         public ActionResult AddTreat(Flavor flavor, int treatId)
         {
 #nullable enable
-            TreatFlavor? joinEntity = _db.TreatFlavors.FirstOrDefault(join => (join.TreatId == treatId && join.FlavorId == flavor.FlavorId));
+            TreatFlavor? joinEntity = _db.TreatFlavors.FirstOrDefault(join => join.TreatId == treatId && join.FlavorId == flavor.FlavorId);
 #nullable disable
             if (joinEntity == null && treatId != 0)
             {

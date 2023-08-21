@@ -9,7 +9,13 @@
 _Web application that allows user to add treats and flavors and link them through a join table that limits access to create, edit and delete functionality to logged in users while allowing anyone to read_
 
 ## Setup/Installation Requirements
+  
+  Software Requirements:
+  1. Internet browser
+  2. A code editor like VSCode or Atom to view or edit the codebase.
+  3. MySQL
 
+  Setup:
   1. Click on this [link to the project repository](https://github.com/Khanjo/Factory.git) on GitHub.   
   2. Click on the "Clone or download" button to copy the project.     
   3. If you know how to use the command line and Github, clone the project with `git clone`. Use "**Download ZIP**" if not.
@@ -18,10 +24,10 @@ _Web application that allows user to add treats and flavors and link them throug
   6. Create an appsettings.json file in **Your Filepath/**`Pierre` and copy/paste this code:  
      {
          "ConnectionStrings": {
-             "DefaultConnection": "Server=localhost;Port=3306;database=Pierre;uid=root;pwd=!QZ2wx#EC4rv;"
+             "DefaultConnection": "Server=localhost;Port=3306;database=`Name Your Database`;uid=root;pwd=`Your Password`;"
          }
      }
-  7. Navigate to the Factory directory by entering `cd` **Your Filepath/**`Factory`. Then enter `dotnet restore`, `dotnet build`, `dotnet ef database update` then `dotnet run` into the terminal.
+  7. Navigate to the Pierre directory by entering `cd` **Your Filepath/**`Pierre`. Then enter `dotnet restore`, `dotnet build`, `dotnet ef database update` then `dotnet run` into the terminal.
 
 ## Known Bugs
 
