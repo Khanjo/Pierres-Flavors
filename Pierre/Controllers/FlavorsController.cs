@@ -93,9 +93,17 @@ namespace Pierre.Controllers
         [HttpPost]
         public ActionResult Edit(Flavor flavor)
         {
-            _db.Flavors.Update(flavor);
-            _db.SaveChanges();
-            return RedirectToAction("Details", new { id = flavor.FlavorId });
+            if (!ModelState.IsValid)
+            {
+                ViewBag.PageTitle = "Edit Flavor";
+                return View(flavor);
+            }
+            else
+            {
+                _db.Flavors.Update(flavor);
+                _db.SaveChanges();
+                return RedirectToAction("Details", new { id = flavor.FlavorId });
+            }
         }
 
         [Authorize]
