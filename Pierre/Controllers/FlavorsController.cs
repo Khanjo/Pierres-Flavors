@@ -39,9 +39,17 @@ namespace Pierre.Controllers
         [HttpPost]
         public ActionResult Create(Flavor flavor)
         {
-            _db.Flavors.Add(flavor);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (!ModelState.IsValid)
+            {
+                ViewBag.PageTitle = "Create Flavor";
+                return View(flavor);
+            }
+            else
+            {
+                _db.Flavors.Add(flavor);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Details(int id)

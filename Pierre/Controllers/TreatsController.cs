@@ -38,9 +38,17 @@ namespace Pierre.Controllers
         [HttpPost]
         public ActionResult Create(Treat treat)
         {
-            _db.Treats.Add(treat);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (!ModelState.IsValid)
+            {
+                ViewBag.PageTitle = "Create Treat";
+                return View(treat);
+            }
+            else
+            {
+                _db.Treats.Add(treat);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Details(int id)

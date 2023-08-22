@@ -23,6 +23,9 @@
 <hr>
 
 <div class="links">
-    <h3>@Html.ActionLink("Add New Flavor", "Create")</h3>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h3>@Html.ActionLink("Add New Flavor", "Create")</h3>
+    }
     <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
 </div>
